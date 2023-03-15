@@ -55,6 +55,30 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>
+								unpack
+							</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<artifactItems>
+						<artifactItem>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>${project.version}</version>
+						</artifactItem>
+					</artifactItems>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.10</version>
@@ -68,10 +92,12 @@
 				</executions>
 				<configuration>
 					<repository>remotefetchparse</repository>
-					<tag>spotify-maven-plugin</tag>
+					<!--<tag>spotify-maven-plugin</tag>-->
+					<tag>advdockercaching-with-dependencyplugin</tag>
 					<skipDockerInfo>true</skipDockerInfo>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
